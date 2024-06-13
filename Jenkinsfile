@@ -9,17 +9,10 @@ pipeline {
           }
         }
 
-        stage('Setup Python Environment') {
-          steps {
-            sh 'python3.8 -m venv intern'
-            sh 'source intern/bin/activate'
-          }
-        }
-
       }
     }
 
-    stage('run load csv files') {
+    stage('Build') {
       steps {
         dir(path: '/home/jason/Desktop/internship/scripts') {
           sh 'python loadscv_db.py'

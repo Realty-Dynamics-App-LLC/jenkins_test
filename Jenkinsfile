@@ -7,5 +7,11 @@ pipeline {
       }
     }
 
+    stage('run load csv files') {
+      steps {
+        sh 'python /home/jason/Desktop/internship/scripts/loadcsv_db.py'
+      }
+    }
+
   }
 }

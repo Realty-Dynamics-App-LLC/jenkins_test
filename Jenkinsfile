@@ -9,7 +9,10 @@ pipeline {
 
     stage('run load csv files') {
       steps {
-        sh 'python /home/jason/Desktop/internship/scripts/loadcsv_db.py'
+        dir(path: '/home/jason/Desktop/internship/scripts') {
+          sh 'python loadscv_db.py'
+        }
+
       }
     }
 

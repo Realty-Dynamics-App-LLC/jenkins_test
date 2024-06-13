@@ -11,7 +11,7 @@ import pandas as pd
 # In[3]:
 
 
-conversion_table = pd.read_csv('/datadrive/parcel_id_to_pin_conversion_table.csv')
+conversion_table = pd.read_csv('/home/jason/Desktop/internship/parcel_id_to_pin_conversion_table.csv')
 
 
 # In[4]:
@@ -23,7 +23,7 @@ conversion_table.info(show_counts=True)
 # In[ ]:
 
 
-gis_data = gpd.read_file('/datadrive/florida_2023.geojson')
+gis_data = gpd.read_file('/home/jason/Desktop/internship/florida_2023.geojson')
 
 
 # In[ ]:
@@ -42,14 +42,14 @@ gis_data = gis_data.merge(conversion_table, left_on='PARCELNO', right_on='parcel
 
 
 gis_data.info(show_counts=True)
-gis_data.to_file('/datadrive/florida_2023_with_pin.geojson', driver='GeoJSON') 
+gis_data.to_file('/home/jason/Desktop/internship/florida_2023_with_pin.geojson', driver='GeoJSON') 
 
 
 # In[2]:
 
 
-gis_data = gpd.read_file('/datadrive/florida_2023_with_pin.geojson')
-latest_sales_data = pd.read_csv('/datadrive/latest_sales_data.csv')
+gis_data = gpd.read_file('/home/jason/Desktop/internship/florida_2023_with_pin.geojson')
+latest_sales_data = pd.read_csv('/home/jason/Desktop/internship/latest_sales_data.csv')
 
 
 # In[5]:
@@ -95,7 +95,7 @@ final_merged_data = final_merged_data.drop_duplicates(subset=['parcel_id', 'pin'
 final_merged_data.dropna(subset=['Sale Price'], inplace=True)
 final_merged_data = final_merged_data[['parcel_id', 'pin', 'Sale Date', 'Sale Price', 'geometry']]
 final_merged_data.reset_index(drop=True, inplace=True)
-final_merged_data.to_file('/datadrive/final_sales_gis_file.geojson', driver='GeoJSON')
+final_merged_data.to_file('/home/jason/Desktop/internship/final_sales_gis_file.geojson', driver='GeoJSON')
 
 
 # In[10]:

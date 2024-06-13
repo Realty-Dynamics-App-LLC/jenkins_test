@@ -23,7 +23,7 @@ print(sqlalchemy.__version__)
 # Define the connection string components
 username = "postgres"
 password = "1234"
-host = "172.208.27.131"
+host = "localhost"
 port = "5432"
 database = "postgres"
 

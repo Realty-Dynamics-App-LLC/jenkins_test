@@ -6,9 +6,9 @@ import psycopg2
 import csv
 
 # Replace placeholders with your actual credentials and file paths
-connection_string = "dbname='postgres' user='postgres' password='1234' host='172.208.27.131' port='5432'"
-csv_path_parcelid = "/datadrive/parcel_id_to_pin_conversion_table.csv"
-csv_path_sales = "/datadrive/latest_sales_data.csv"
+connection_string = "dbname='postgres' user='postgres' password='1234' host='localhost' port='5432'"
+csv_path_parcelid = "/home/jason/Desktop/internship/parcel_id_to_pin_conversion_table.csv"
+csv_path_sales = "/home/jason/Desktop/internship/latest_sales_data.csv"
 
 try:
     # Connect to the database

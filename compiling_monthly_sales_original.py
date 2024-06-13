@@ -15,7 +15,7 @@ from dbfread import DBF
 # In[2]:
 
 
-root = 'data/latest_sales_data'
+root = '/home/jason/Desktop/internship/latest_sales_data'
 
 # Initialize an empty dictionary to hold dataframes
 dataframes = {}
@@ -64,7 +64,7 @@ for key in dataframes.keys():
 # In[4]:
 
 
-root = 'data/latest_sales_data'
+root = '/home/jason/Desktop/internship/latest_sales_data'
 
 # Initialize an empty dictionary to hold metadata dataframes
 metadata_dfs = {}
@@ -145,7 +145,7 @@ combined_df.info(show_counts=True)
 # In[9]:
 
 
-combined_df.to_csv('data/compiled_latest_sales_data.csv', index=False)
+combined_df.to_csv('/home/jason/Desktop/internship/compiled_latest_sales_data.csv', index=False)
 
 
 # In[ ]:

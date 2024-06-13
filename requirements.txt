@@ -1,0 +1,5 @@
+psycopg2
+geopandas
+pandas
+sqlalchemy=1.4.52
+geoalchemy2=0.9.2

@@ -1,11 +1,12 @@
 pipeline {
   agent any
   stages {
-    stage('Check Python Version') {
+    stage('Setup Python Environment') {
       steps {
         sh '''
-which python3 || which python
-                    python3 --version || python --version
+python3 -m venv venv
+                    . venv/bin/activate
+                    pip install -r requirements.txt
 '''
       }
     }

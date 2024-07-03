@@ -1,19 +1,11 @@
 pipeline {
   agent any
   stages {
-    stage('Setup Python Environment') {
+    stage('Check Python Version') {
       steps {
-        sh '''sh \'python3 -m venv venv\'
-sh \'. venv/bin/activate\'
-sh \'pip install -r requirements.txt\''''
+        sh 'sh \'python3 --version || python --version\''
       }
     }
 
-  }
-  environment {
-    DB_HOST = '172.208.27.131'
-    DB_PORT = '5432'
-    DB_USER = 'postgres'
-    DB_PASSWORD = '1234'
   }
 }

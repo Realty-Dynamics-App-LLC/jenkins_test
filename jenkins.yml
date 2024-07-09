@@ -1,0 +1,12 @@
+name: jenkins
+channels:
+   - defaults
+dependencies:
+   - python=3.8
+   - geopandas
+   - pandas
+   - pip
+   - pip:
+     - sqlalchemy==1.4.52
+     - geoalchemy2==0.9.2
+     - psycopg2-binary

@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label 'azure-vm'
+    }
+
+  }
   stages {
     stage('Checkout Code') {
       steps {

@@ -1,60 +1,12 @@
-from sqlalchemy import create_engine, text
 import psycopg2
 import csv
 
-# Replace placeholders with your actual credentials and file paths
-connection_string = "postgresql+psycopg2://postgres:1234@20.84.118.206:5432/postgres"
-csv_path_parcelid = "/app/parcel_id_to_pin_conversion_table.csv"
-csv_path_sales = "/app/latest_sales_data.csv"
-
-# Using SQLAlchemy
-def load_data_with_sqlalchemy():
-    engine = create_engine(connection_string)
-
-    with engine.connect() as connection:
-        # Drop tables if they exist
-        connection.execute(text("DROP TABLE IF EXISTS parcelidtopin"))
-        connection.execute(text("DROP TABLE IF EXISTS latest_sales_data"))
-
-        # Create tables
-        create_parcelidtopin = text("""
-        CREATE TABLE IF NOT EXISTS parcelidtopin (
-            parcel_id TEXT,
-            pin TEXT
-        );
-        """)
-        connection.execute(create_parcelidtopin)
-
-        create_sales_data = text("""
-        CREATE TABLE IF NOT EXISTS latest_sales_data (
-            "ParcelID" TEXT,
-            Sale_Date TEXT,
-            Sale_Price TEXT,
-            "PIN" TEXT,
-            Alt_Key TEXT
-        );
-        """)
-        connection.execute(create_sales_data)
-
-        # Load CSV data
-        load_parcelid = text(f"""
-        COPY parcelidtopin FROM '{csv_path_parcelid}' DELIMITER ',' CSV HEADER;
-        """)
-        connection.execute(load_parcelid)
-
-        load_sales = text(f"""
-        COPY latest_sales_data FROM '{csv_path_sales}' DELIMITER ',' CSV HEADER;
-        """)
-        connection.execute(load_sales)
-
-    print("CSV data loaded successfully with SQLAlchemy!")
-
 # Using psycopg2
 def load_data_with_psycopg2():
-    connection_string = "dbname='postgres' user='postgres' password='1234' host='localhost' port='5432'"
+    connection_string = "dbname='postgres' user='postgres' password='1234' host='172.208.27.131' port='5432'"
     csv_path_parcelid = "/app/parcel_id_to_pin_conversion_table.csv"
     csv_path_sales = "/app/latest_sales_data.csv"
-
+    connection = None  # Initialize connection to None
     try:
         # Connect to the database
         connection = psycopg2.connect(connection_string)
@@ -103,4 +55,4 @@ def load_data_with_psycopg2():
 
 # Uncomment one of the following lines to choose which method to use:
 # load_data_with_sqlalchemy()
-# load_data_with_psycopg2()
+load_data_with_psycopg2()

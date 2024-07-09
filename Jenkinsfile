@@ -22,7 +22,7 @@ pipeline {
 
         stage('Docker build image') {
           steps {
-            sh 'Docker build -t pipeline:test'
+            sh 'Docker build -t pipeline .'
           }
         }
 

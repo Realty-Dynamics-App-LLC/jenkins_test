@@ -13,8 +13,19 @@ pipeline {
     }
 
     stage('Log') {
-      steps {
-        sh 'ls -la'
+      parallel {
+        stage('Log') {
+          steps {
+            sh 'ls -la'
+          }
+        }
+
+        stage('Docker build image') {
+          steps {
+            sh 'Docker build -t pipeline:test'
+          }
+        }
+
       }
     }
 

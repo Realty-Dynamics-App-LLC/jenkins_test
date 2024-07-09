@@ -6,9 +6,9 @@ pipeline {
 
   }
   stages {
-    stage('') {
+    stage('checking out code') {
       steps {
-        git 'https://github.com/Realty-Dynamics-App-LLC/jenkins_test'
+        git(url: 'https://github.com/Realty-Dynamics-App-LLC/jenkins_test', branch: 'main')
       }
     }
 

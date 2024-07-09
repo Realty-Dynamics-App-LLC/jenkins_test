@@ -24,11 +24,5 @@ pipeline {
       }
     }
 
-    stage('log into Dockerhub') {
-      steps {
-        sh 'docker login -u destor306'
-      }
-    }
-
   }
 }
